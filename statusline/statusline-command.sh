@@ -117,7 +117,14 @@ fi
 # --- Assemble output ---
 out=""
 
-# Segment 1: 🌿 git branch (only if in a git repo)
+# Segment 1: 📁 current working directory (with ~ for $HOME)
+if [ -n "$cwd" ]; then
+  cwd_display="${cwd/#$HOME/~}"
+  out+="📁 ${BOLD}${BLUE}${cwd_display}${RESET}"
+  out+=" ${DIM}|${RESET} "
+fi
+
+# Segment 2: 🌿 git branch (only if in a git repo)
 if [ -n "$branch" ]; then
   out+="🌿 ${BOLD}${MAGENTA}${branch}${RESET}"
   out+=" ${DIM}|${RESET} "

@@ -8,10 +8,13 @@ A collection of my personal configuration files for [Claude Code](https://docs.a
 
 A custom status line script (`statusline/statusline-command.sh`) that displays:
 
+- **Working directory** -- current directory, with `$HOME` shortened to `~`
 - **Git branch** -- current branch or detached HEAD
 - **Model & effort level** -- which model is active and the configured effort level
 - **Context window** -- tokens used / total with color-coded percentage (green < 50%, yellow < 80%, red >= 80%)
 - **Rate limits** -- 5-hour and 7-day usage percentages with the same color coding
+
+![Status line preview](statusline/preview.svg)
 
 **Requirements:** `jq` and `git` must be available on your `PATH`.
 
