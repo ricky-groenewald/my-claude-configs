@@ -10,6 +10,7 @@ CYAN="\033[36m"
 YELLOW="\033[33m"
 GREEN="\033[32m"
 MAGENTA="\033[35m"
+BRIGHT_MAGENTA="\033[95m"
 RED="\033[31m"
 BLUE="\033[34m"
 WHITE="\033[97m"
@@ -31,9 +32,11 @@ effort=$(jq -r '.effortLevel // empty' ~/.claude/settings.json 2>/dev/null)
 
 # Map effort to a readable label + colour
 case "$effort" in
-  high|High)       effort_label="High Effort";   effort_color="$RED"     ;;
-  medium|Medium)   effort_label="Medium Effort";  effort_color="$YELLOW"  ;;
-  low|Low)         effort_label="Low Effort";    effort_color="$GREEN"   ;;
+  max|Max|maximum|Maximum)     effort_label="Max Effort";        effort_color="$BRIGHT_MAGENTA" ;;
+  xhigh|XHigh|Xhigh|extrahigh) effort_label="Extra High Effort"; effort_color="$MAGENTA"        ;;
+  high|High)                   effort_label="High Effort";       effort_color="$RED"            ;;
+  medium|Medium)               effort_label="Medium Effort";     effort_color="$YELLOW"         ;;
+  low|Low)                     effort_label="Low Effort";        effort_color="$GREEN"          ;;
   *)
     if [ -n "$effort" ]; then
       effort_label="$effort"
